@@ -2,6 +2,15 @@
 ## John Stratton, Ashley Biermann, Mason Fryberger
 
 
+### Wireframe visualization for each page
+
+[Home Page](home-page-wireframe.PNG)
+
+[About Us](about-us-wireframe.PNG)
+
+[Leaderboard](leaderboard-wireframe.PNG)
+
+
 ## Synopsis
 
 At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
@@ -33,3 +42,4 @@ Let people know how they can dive into the project, include important links to t
 ## License
 
 A short snippet describing the license (MIT, Apache, etc.)
+
