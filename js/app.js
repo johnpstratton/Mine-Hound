@@ -31,8 +31,7 @@ Avatar.prototype.render = function () {
   ctx.fillRect(this.x, this.y, this.width, this.height);
 };
 
-// Creates new avatar from constructor
-var gamePiece = new Avatar('red', 'sally', 0, 0);
+
 
 //TODO: array to hold Hazard objects
 
@@ -54,25 +53,88 @@ Hazard.prototype.render = function () {
   ctx.fillRect(this.x, this.y, this.width, this.height);
 };
 
-// making a new Hazard object
-var mine = new Hazard((unit * 4), (unit * 4), 'purple');
 
-// Call to render avatar and hazard to page
-gamePiece.render();
-mine.render();
+
 
 // TODO: method to assign key stoke to moveAvatar function - eventPotato.preventDefault();  * when key is up ... keyup
 // event handler for each keyup passes in the appropriate values to the moveAvatar function as arguments
 
 // ONLY keyup TODO is allowed to modify moveAvatar();
 // basic function to move the avatar in one direction
-Avatar.prototype.moveAvatar = function () {
-  this.x += unit;
-  this.y += unit;
-  this.render();
+// Avatar.prototype.moveAvatar = function () {
+//   this.x += unit;
+//   this.y += unit;
+//   this.render();
+// };
+
+
+
+//----------------------- CONTROLS DECLARATION BEGINNING  ---------------------------------------
+
+
+
+
+
+Avatar.prototype.movementControl = function (e) {
+  //TODO: REVISIT preventDefault() 
+  // left directional key
+  if (e.keyCode == 37) {
+    if (gamePiece.x > 0) {
+      gamePiece.x -= unit;
+      console.log('left-directional');
+      gamePiece.render();
+    }
+  }
+  // up directional key
+  if (e.keyCode == 38) {
+    if (gamePiece.y > 0) {
+      gamePiece.y -= unit;
+      console.log('up-directional');
+      gamePiece.render();
+    }
+  }
+  // right directional key
+  if (e.keyCode == 39) {
+    if (gamePiece.x < (arena.width - unit)) {
+      gamePiece.x += unit;
+      console.log('right-directional');
+      gamePiece.render();
+    }
+  }
+  // down directional key
+  if (e.keyCode == 40) {
+    if (gamePiece.y < (arena.height - unit)) {
+      gamePiece.y += unit;
+      console.log('down-directional');
+      gamePiece.render();
+    }
+  }
+
 };
 
+  // Creates new avatar from constructor
+  var gamePiece = new Avatar('red', 'sally', 0, 0);
+
+
+  // making a new Hazard object
+  var mine = new Hazard((unit * 4), (unit * 4), 'purple');
+
+  document.addEventListener('keydown', gamePiece.movementControl, true);
+  // document.addEventListener('keydown', console.log, true);
+
+  // Call to render avatar and hazard to page
+  gamePiece.render();
+  mine.render();
+
 // calls to move the avatar
-gamePiece.moveAvatar();
-gamePiece.moveAvatar();
+// gamePiece.moveAvatar();
+// gamePiece.moveAvatar();
+
+
+
+
+
+
+
+
 
