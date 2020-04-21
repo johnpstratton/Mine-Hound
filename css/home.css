@@ -1,0 +1,29 @@
+*{
+  overflow: hidden;
+  outline: purple  dotted 1px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+body{
+  width: 960px;
+}
+
+#play{
+  position: relative;
+  width: max-content;
+  height: max-content;
+}
+
+#gameWindow{
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section h2 {
+  float: left;
+}
+
+section p {
+  float: left;
+}
