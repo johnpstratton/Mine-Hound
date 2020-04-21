@@ -44,8 +44,18 @@ function Hazard(x, y, color) {
   this.visibility = false;
   this.color = color;
 }
-// TODO: listener (listens for keyup), if it hears it, then the TODO: handler (global function), will check to see if Avatar is same location as Hazard, and if Yes, then boolean this.dead = true
-//TODO: MOB PROGRAM - attach the listern to he handler
+
+//==== DeadAlive Condition Method====//
+
+Avatar.prototype.killAvatar = function(){
+  if(gamePiece.x === mine.x && gamePiece.y === mine.y){
+    gamePiece.dead = true;
+    console.log('gamePiece: ' , gamePiece.dead);
+
+  }
+}
+
+
 
 // Render hazard
 Hazard.prototype.render = function () {
@@ -54,26 +64,7 @@ Hazard.prototype.render = function () {
 };
 
 
-
-
-// TODO: method to assign key stoke to moveAvatar function - eventPotato.preventDefault();  * when key is up ... keyup
-// event handler for each keyup passes in the appropriate values to the moveAvatar function as arguments
-
-// ONLY keyup TODO is allowed to modify moveAvatar();
-// basic function to move the avatar in one direction
-// Avatar.prototype.moveAvatar = function () {
-//   this.x += unit;
-//   this.y += unit;
-//   this.render();
-// };
-
-
-
 //----------------------- CONTROLS DECLARATION BEGINNING  ---------------------------------------
-
-
-
-
 
 Avatar.prototype.movementControl = function (e) {
   //TODO: REVISIT preventDefault() 
@@ -112,14 +103,18 @@ Avatar.prototype.movementControl = function (e) {
 
 };
 
+
+
   // Creates new avatar from constructor
   var gamePiece = new Avatar('red', 'sally', 0, 0);
-
 
   // making a new Hazard object
   var mine = new Hazard((unit * 4), (unit * 4), 'purple');
 
+  // add listener to instance of Hazard (mine). 
+  
   document.addEventListener('keydown', gamePiece.movementControl, true);
+  document.addEventListener('keydown', gamePiece.killAvatar);
   // document.addEventListener('keydown', console.log, true);
 
   // Call to render avatar and hazard to page
