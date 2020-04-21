@@ -6,6 +6,8 @@ console.log('hello');
 const unit = 50;
 var arena = document.getElementById('gameWindow');
 var ctx = arena.getContext('2d');
+//TODO: track total attempts
+
 
 // Canvas - target through DOM manipulation
 // declare context var and assign it value of 2d
@@ -21,7 +23,6 @@ function Avatar(color, name, x, y) {
   this.width = unit;
   this.height = unit;
   this.dead = false;
-
 }
 
 // Render avatar
@@ -33,6 +34,8 @@ Avatar.prototype.render = function () {
 // Creates new avatar from constructor
 var gamePiece = new Avatar('red', 'sally', 0, 0);
 
+//TODO: array to hold Hazard objects
+
 // Hazard constructor
 function Hazard(x, y, color) {
   this.x = x;
@@ -42,6 +45,8 @@ function Hazard(x, y, color) {
   this.visibility = false;
   this.color = color;
 }
+// TODO: listener (listens for keyup), if it hears it, then the TODO: handler (global function), will check to see if Avatar is same location as Hazard, and if Yes, then boolean this.dead = true
+//TODO: MOB PROGRAM - attach the listern to he handler
 
 // Render hazard
 Hazard.prototype.render = function () {
@@ -56,6 +61,10 @@ var mine = new Hazard((unit * 4), (unit * 4), 'purple');
 gamePiece.render();
 mine.render();
 
+// TODO: method to assign key stoke to moveAvatar function - eventPotato.preventDefault();  * when key is up ... keyup
+// event handler for each keyup passes in the appropriate values to the moveAvatar function as arguments
+
+// ONLY keyup TODO is allowed to modify moveAvatar();
 // basic function to move the avatar in one direction
 Avatar.prototype.moveAvatar = function () {
   this.x += unit;
@@ -66,3 +75,4 @@ Avatar.prototype.moveAvatar = function () {
 // calls to move the avatar
 gamePiece.moveAvatar();
 gamePiece.moveAvatar();
+
