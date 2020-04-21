@@ -4,11 +4,11 @@
 
 ### Wireframe visualization for each page
 
-[Home Page](home-page-wireframe.PNG)
+[Home Page](img-assets/home-page-wireframe.PNG)
 
-[About Us](about-us-wireframe.PNG)
+[About Us](img-assets/about-us-wireframe.PNG)
 
-[Leaderboard](leaderboard-wireframe.PNG)
+[Leaderboard](img-assets/leaderboard-wireframe.PNG)
 
 
 ## Synopsis
