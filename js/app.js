@@ -121,13 +121,13 @@ Avatar.prototype.winnerSquare = function () {
   if (gamePiece.x === trophy.x && gamePiece.y === trophy.y) {
     attempts++;
     console.log('Winner you WIN!!!');
-    //TODO: ADD RENDER TO TABLE FUNCTION BEFORE ZERO-ING OUT ATTEMPTS ON NEXT LINES. since attempts was being stored and referenced throughout, just use attempts as the number variable in the render function
 
-    var playerWinner = new Winners(gamePiece.name, attempts);
-    playerWinner.renderTable();
-
-    attempts = 0;
     localStorage.setItem('attemptsToWin', attempts);
+    localStorage.setItem('playerName', gamePiece.name);
+    //TODO: ADD RENDER TO TABLE FUNCTION BEFORE ZERO-ING OUT ATTEMPTS ON NEXT LINES. since attempts was being stored and referenced throughout, just use attempts as the number variable in the render function
+    //Save data that we want in leaderboard.js (gamePiece.name and attempts);
+    attempts = 0;
+    window.location.href = "leaderboard.html";
   }
 };
 // retrieves data from localStorage to prevent page reload from zero-ing out the attempts counter
@@ -170,10 +170,6 @@ trophy.render();
 
 
 
-
-var playerWinner = new Winners(gamePiece.name, attempts);
-
-playerWinner.renderTable();
 
 
 

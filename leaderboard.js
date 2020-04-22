@@ -26,13 +26,17 @@ Winners.prototype.renderTable = function () {
   }
 };
 
-
-
-
-
 var topWinner = new Winners('jimbob', 1);
 topWinner.renderTable();
 var midWinner = new Winners('Tim', 8);
 midWinner.renderTable();
 var lowWinner = new Winners('Loser', 324);
 lowWinner.renderTable();
+
+var playerName = localStorage.getItem('playerName');
+var attempts = localStorage.getItem('attemptsToWin');
+
+if (playerName) {
+  var playerWinner = new Winners(playerName, attempts);
+  playerWinner.renderTable();
+}
