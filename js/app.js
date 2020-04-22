@@ -1,7 +1,6 @@
 'use strict';
 console.log('hello');
 
-// import {legra} from 'https://unpkg.com/legra?browser';
 
 var arena = document.getElementById('gameWindow');
 var ctx = arena.getContext('2d');
@@ -56,6 +55,8 @@ Avatar.prototype.killAvatar = function () {
       localStorage.setItem('attemptsToWin', attempts);
       console.log(attempts);
       // console.log('gamePiece dead: ', gamePiece.dead);
+      // Reset the gameboard
+      startGame();
     }
   }
 };
@@ -120,13 +121,15 @@ Prize.prototype.render = function(){
   legra.rectangle(this.x, this.y, this.width, this.height,{filled: true, color: this.color});
 }
 
-Avatar.prototype.winnerSquare = function () {
+Avatar.prototype.winnerSquare = function (e) {
   if (gamePiece.x === trophy.x && gamePiece.y === trophy.y) {
     attempts++;
     console.log('Winner you WIN!!!');
     //TODO: ADD RENDER TO TABLE FUNCTION BEFORE ZERO-ING OUT ATTEMPTS ON NEXT LINES. since attempts was being stored and referenced throughout, just use attempts as the number variable in the render function
     attempts = 0;
     localStorage.setItem('attemptsToWin', attempts);
+    // reset the gameboard
+    startGame();
   }
 };
 // retrieves data from localStorage to prevent page reload from zero-ing out the attempts counter
@@ -136,20 +139,63 @@ var checkForPreviousAttempts = function() {
   }
 };
 
-// Calls background render from 8bit.js
-playMat();
+//!!! function below is used to set the game state to initial. it's purpose is to call all instantiations of objects and renders. this is called in multiple event handlers!!!//
+
+//====== The start function===//
+//TODO: FIXME: WRAP ALL OBJECT INSTANTIATIONS IN START FUNCTION
+// Declares Avatar for assignment in Start function
+var gamePiece;
+//Declares Hazards for assignment in Start function
+var mine;
+var mine01;
+var mine02;
+var mine03;
+var mine04;
+var mine05;
+var mine06;
+var mine07;
+var mine08;
+// Declares prize for assignment in Start function
+var trophy;
+
+function startGame(){
+
+  gamePiece = new Avatar('red', 'sally', 0, 0);
+
+  mine = new Hazard((unit * 4), (unit * 4), 'purple');
+  mine01 = new Hazard((unit * 3), (unit * 7), 'orange');
+  mine02 = new Hazard((unit * 7), (unit* 9), 'red')
+  mine03 = new Hazard((unit * 3), (unit * 9), 'grey')
+  mine04 = new Hazard ((unit), (unit * 3), 'brown');
+  mine05 = new Hazard((unit * 9), (unit * 7), 'teal');
+  mine06 = new Hazard((unit * 2), (unit * 5), 'cobalt');
+  mine07 = new Hazard((unit * 5),(unit * 8), 'mediumseagreen');
+  mine08 = new Hazard((unit * 6), (unit * 4), 'blanchedalmond');
+
+  trophy = new Prize((unit * 9), (unit * 9), 'goldenrod');
+
+  // Calls background render from 8bit.js
+  playMat();
+  // render all game objects in order, player, hazard, trophy. 
+  gamePiece.render();
+
+  mine.render();
+  mine01.render();
+  mine02.render();
+  mine03.render();
+  mine04.render();
+  mine05.render();
+  mine06.render();
+  mine07.render();
+  mine08.render();
+
+  trophy.render();
+}
+startGame();
 
 
-// Creates new avatar from constructor
-var gamePiece = new Avatar('red', 'sally', 0, 0);
 
-// making a new Hazard object
-var mine = new Hazard((unit * 4), (unit * 4), 'purple');
-var mine01 = new Hazard((unit * 3), (unit * 7), 'orange');
-var mine03 = new Hazard((unit * 6), (unit * 2), 'blue');
-
-// winner square, the trophy
-var trophy = new Prize((unit * 9), (unit * 9), 'goldenrod');
+//Win Condition event Listener
 document.addEventListener('keydown', gamePiece.winnerSquare);
 
 // add listener to instance of Hazard (mine).
@@ -159,14 +205,9 @@ document.addEventListener('keydown', gamePiece.killAvatar);
 //retrieves attempts from page reloads that occured before winning
 checkForPreviousAttempts();
 
-// Call to render avatar, hazards, trophy to page
-gamePiece.render();
 
-mine.render();
-mine01.render();
-mine03.render();
 
-trophy.render();
+
 
 
 

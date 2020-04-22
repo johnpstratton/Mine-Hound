@@ -20,14 +20,15 @@ Var trophy (instance of Prize)
 //TODO: [x] function to render background of canvas
 
 function playMat(){
-//target canvas
-legra.rectangle(0, 0, (unit * 10), (unit * 10), {filled: true, color: '#00cbff'});
-  //render rectangle = to canvas width-height in Units
-  // pick color. 
+  legra.rectangle(0, 0, (unit * 10), (unit * 10), {filled: true, color: '#00cbff'});
+
 }
 
 //TODO: [] OPTIONAL: incorporate gradients into bacground 
 //TODO: [x] call function in app.js (before all other function calls)
 //TODO: [] function to render avatar as a defined character childOf: the render function and called within it: 
 
-//
+//TODO: [] Declare a Reset function that sets the board back to zero. 
+
+//[] target canvas
+//[]
