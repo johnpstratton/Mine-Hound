@@ -1,9 +1,18 @@
 'use strict';
 console.log('hello');
 
-const unit = 50; // hieght and width of game "tile";
+// import {legra} from 'https://unpkg.com/legra?browser';
+
 var arena = document.getElementById('gameWindow');
 var ctx = arena.getContext('2d');
+var legra = new legra(ctx, 10, {color: 'yellow'});
+legra.ctx = ctx;
+const unit = 5; // hieght and width of game "tile";
+
+
+
+
+
 //TODO: track total attempts
 
 
@@ -20,8 +29,8 @@ function Avatar(color, name, x, y) {
 
 // Render avatar
 Avatar.prototype.render = function () {
-  ctx.fillStyle = this.color;
-  ctx.fillRect(this.x, this.y, this.width, this.height);
+  // ctx.fillStyle = this.color; // this line was core code.
+  legra.rectangle(this.x, this.y, this.width, this.height,{filled: true, color: this.color});
 };
 
 // Hazard constructor
@@ -49,8 +58,8 @@ Avatar.prototype.killAvatar = function(){
 
 // Render hazard
 Hazard.prototype.render = function () {
-  ctx.fillStyle = this.color;
-  ctx.fillRect(this.x, this.y, this.width, this.height);
+  // ctx.fillStyle = this.color; // this was core code.
+  legra.rectangle(this.x, this.y, this.width, this.height,{filled: true, color: this.color});
 };
 
 //----------------------- CONTROLS DECLARATION BEGINNING  ---------------------------------------
@@ -103,8 +112,8 @@ function Prize(x, y, color) {
 }
 
 Prize.prototype.render = function(){
-  ctx.fillStyle = this.color;
-  ctx.fillRect(this.x, this.y, this.width, this.height);
+  // ctx.fillStyle = this.color; // this was core code
+  legra.rectangle(this.x, this.y, this.width, this.height,{filled: true, color: this.color});
 }
 
 Avatar.prototype.winnerSquare = function(){
@@ -114,6 +123,8 @@ Avatar.prototype.winnerSquare = function(){
     }
 }
 
+// Calls background render from 8bit.js
+playMat();
 
 // Creates new avatar from constructor
 var gamePiece = new Avatar('red', 'sally', 0, 0);
