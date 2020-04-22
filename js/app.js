@@ -5,7 +5,7 @@ const unit = 50; // hieght and width of game "tile";
 var arena = document.getElementById('gameWindow');
 var ctx = arena.getContext('2d');
 //TODO: track total attempts
-
+var attempts = 0;
 
 // Avatar constructor
 function Avatar(color, name, x, y) {
@@ -36,16 +36,20 @@ function Hazard(x, y, color) {
 }
 
 var allHazards = [];
-//==== DeadAlive Condition Method====//
 
-Avatar.prototype.killAvatar = function(){
-  for(var i = 0; i < allHazards.length; i++){
-    if(gamePiece.x === allHazards[i].x && gamePiece.y === allHazards[i].y){
+//==== DeadAlive Condition Method====//
+Avatar.prototype.killAvatar = function () {
+  for (var i = 0; i < allHazards.length; i++) {
+    if (gamePiece.x === allHazards[i].x && gamePiece.y === allHazards[i].y) {
       gamePiece.dead = true;
-      console.log('gamePiece: ' , gamePiece.dead);
+      attempts++;
+      //send attempt to local storage (prevent page reload cheaters)
+      localStorage.setItem('attemptsToWin', attempts);
+      console.log(attempts);
+      // console.log('gamePiece dead: ', gamePiece.dead);
     }
   }
-}
+};
 
 // Render hazard
 Hazard.prototype.render = function () {
@@ -55,12 +59,12 @@ Hazard.prototype.render = function () {
 
 //----------------------- CONTROLS DECLARATION BEGINNING  ---------------------------------------
 Avatar.prototype.movementControl = function (e) {
-  //TODO: REVISIT preventDefault() 
+  //TODO: REVISIT preventDefault();
   // left directional key
   if (e.keyCode == 37) {
     if (gamePiece.x > 0) {
       gamePiece.x -= unit;
-      console.log('left-directional');
+      // console.log('left-directional');
       gamePiece.render();
     }
   }
@@ -68,7 +72,7 @@ Avatar.prototype.movementControl = function (e) {
   if (e.keyCode == 38) {
     if (gamePiece.y > 0) {
       gamePiece.y -= unit;
-      console.log('up-directional');
+      // console.log('up-directional');
       gamePiece.render();
     }
   }
@@ -76,7 +80,7 @@ Avatar.prototype.movementControl = function (e) {
   if (e.keyCode == 39) {
     if (gamePiece.x < (arena.width - unit)) {
       gamePiece.x += unit;
-      console.log('right-directional');
+      // console.log('right-directional');
       gamePiece.render();
     }
   }
@@ -84,14 +88,13 @@ Avatar.prototype.movementControl = function (e) {
   if (e.keyCode == 40) {
     if (gamePiece.y < (arena.height - unit)) {
       gamePiece.y += unit;
-      console.log('down-directional');
+      // console.log('down-directional');
       gamePiece.render();
     }
   }
-
 };
 
-//TODO: Create Winners Object. 
+//TODO: Create Winners Object.
 
 function Prize(x, y, color) {
   this.x = x;
@@ -102,18 +105,26 @@ function Prize(x, y, color) {
   this.color = color;
 }
 
-Prize.prototype.render = function(){
+Prize.prototype.render = function () {
   ctx.fillStyle = this.color;
   ctx.fillRect(this.x, this.y, this.width, this.height);
-}
+};
 
-Avatar.prototype.winnerSquare = function(){
- 
-    if(gamePiece.x === trophy.x && gamePiece.y === trophy.y){      
-      console.log('Winner you WIN!!!');
-    }
-}
-
+Avatar.prototype.winnerSquare = function () {
+  if (gamePiece.x === trophy.x && gamePiece.y === trophy.y) {
+    attempts++;
+    console.log('Winner you WIN!!!');
+    //TODO: ADD RENDER TO TABLE FUNCTION BEFORE ZERO-ING OUT ATTEMPTS ON NEXT LINES. since attempts was being stored and referenced throughout, just use attempts as the number variable in the render function
+    attempts = 0;
+    localStorage.setItem('attemptsToWin', attempts);
+  }
+};
+// retrieves data from localStorage to prevent page reload from zero-ing out the attempts counter
+var checkForPreviousAttempts = function() {
+  if(localStorage.getItem('attemptsToWin') > 0){
+    attempts = localStorage.getItem('attemptsToWin');
+  }
+};
 
 // Creates new avatar from constructor
 var gamePiece = new Avatar('red', 'sally', 0, 0);
@@ -123,18 +134,20 @@ var mine = new Hazard((unit * 4), (unit * 4), 'purple');
 var mine01 = new Hazard((unit * 3), (unit * 7), 'orange');
 var mine03 = new Hazard((unit * 6), (unit * 2), 'blue');
 
-
+// winner square, the trophy
 var trophy = new Prize((unit * 9), (unit * 9), 'goldenrod');
 document.addEventListener('keydown', gamePiece.winnerSquare);
 
-// add listener to instance of Hazard (mine). 
+// add listener to instance of Hazard (mine).
 document.addEventListener('keydown', gamePiece.movementControl, true);
 document.addEventListener('keydown', gamePiece.killAvatar);
 
+//retrieves attempts from page reloads that occured before winning
+checkForPreviousAttempts();
 
-
-// Call to render avatar and hazard to page
+// Call to render avatar, hazards, trophy to page
 gamePiece.render();
+
 mine.render();
 mine01.render();
 mine03.render();
