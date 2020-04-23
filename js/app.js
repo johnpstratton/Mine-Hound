@@ -26,20 +26,20 @@ function Avatar(color, name, x, y) {
   this.height = unit;
   this.dead = false;
 }
+
 var playerName;
+
 function formHandler(event) {
   event.preventDefault();
   playerName = event.name.value;
-  
 }
 var formEl = document.getElementById('nameForm');
-formEl.addEventListener('submit', formHandler)
+formEl.addEventListener('submit', formHandler);
 
 // Render avatar
 Avatar.prototype.render = function () {
   // ctx.fillStyle = this.color; // this line was core code.
   legra.rectangle(this.x, this.y, this.width, this.height,{filled: true, color: this.color});
- 
 };
 
 // Hazard constructor
