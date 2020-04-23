@@ -6,7 +6,6 @@ function Winners(name, score) {
 };
 
 var allWinners = [];
-// console.log(this.allWinners);
 
 Winners.prototype.renderTable = function () {
   var leaderboardTable = document.getElementById('leaderboard');
@@ -33,11 +32,12 @@ midWinner.renderTable();
 var lowWinner = new Winners('Loser', 324);
 lowWinner.renderTable();
 
-var playerName = localStorage.getItem('playerName');
-//FIXME: this might be the stacking issue. attempts is declared already in app.js by reseting it here it may be what's causing the issue. 
+var playerName = localStorage.getItem('playerName'); 
 var attempts = localStorage.getItem('attemptsToWin');
 
 if (playerName) {
   var playerWinner = new Winners(playerName, attempts);
   playerWinner.renderTable();
+  attempts = 0;
+  localStorage.setItem('attemptsToWin', attempts);
 }
