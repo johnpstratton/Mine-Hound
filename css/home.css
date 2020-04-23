@@ -4,11 +4,53 @@
   box-sizing: border-box;
   overflow: auto;
 }
+
 body{
   width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 55px;
+}
+
+header > nav {
+  margin-top: 40px;
+}
+
+header > nav > ul > li {
+  display: inline;
+  padding-left: 200px;
+}
+
+main > section > article > h2 {
+  margin-top: 28px;
+  margin-left: 120px;
+  text-align: center;
+  font-size: 36px;
+}
+
+main > section > article > p {
+  width: 700px;
+  margin-top: 10px;
+  margin-left: 150px;
+}
+
+main > section > article > img {
+  margin-top: 40px;
+  margin-left: 200px;
+}
+
+main > section > form {
+  margin-top: 30px;
+  margin-left: 250px;
 }
 
 #play{
+  margin-top: 20px;
   position: relative;
   width: max-content;
   height: max-content;
@@ -16,8 +58,7 @@ body{
 
 #gameWindow{
   width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 175px;
 }
 
 section h2 {
@@ -26,4 +67,14 @@ section h2 {
 
 section p {
   float: left;
+}
+
+footer > nav {
+  margin-top: 40px;
+}
+
+footer > nav > ul > li {
+  display: inline;
+  margin-left: 130px;
+  padding-left: 60px;
 }
