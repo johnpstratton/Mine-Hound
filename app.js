@@ -10,7 +10,9 @@ legra.ctx = ctx;
 const unit = 5; // hieght and width of game "tile";
 
 
-//track total attempts
+
+
+//TODO: track total attempts
 var attempts = 0;
 
 // Avatar constructor
@@ -23,14 +25,6 @@ function Avatar(color, name, x, y) {
   this.height = unit;
   this.dead = false;
 }
-var playerName;
-function formHandler(event) {
-  event.preventDefault();
-  playerName = event.name.value;
-  
-}
-var formEl = document.getElementById('nameForm');
-formEl.addEventListener('submit', formHandler)
 
 // Render avatar
 Avatar.prototype.render = function () {
@@ -123,19 +117,15 @@ function Prize(x, y, color) {
 Prize.prototype.render = function(){
   // ctx.fillStyle = this.color; // this was core code
   legra.rectangle(this.x, this.y, this.width, this.height,{filled: true, color: this.color});
-};
+}
 
 Avatar.prototype.winnerSquare = function () {
   if (gamePiece.x === trophy.x && gamePiece.y === trophy.y) {
     attempts++;
     console.log('Winner you WIN!!!');
-
-    localStorage.setItem('attemptsToWin', attempts);
-    localStorage.setItem('playerName', gamePiece.name);
     //TODO: ADD RENDER TO TABLE FUNCTION BEFORE ZERO-ING OUT ATTEMPTS ON NEXT LINES. since attempts was being stored and referenced throughout, just use attempts as the number variable in the render function
-    //Save data that we want in leaderboard.js (gamePiece.name and attempts);
     attempts = 0;
-    window.location.href = "leaderboard.html";
+    localStorage.setItem('attemptsToWin', attempts);
   }
 };
 // retrieves data from localStorage to prevent page reload from zero-ing out the attempts counter
@@ -148,8 +138,9 @@ var checkForPreviousAttempts = function() {
 // Calls background render from 8bit.js
 playMat();
 
+
 // Creates new avatar from constructor
-var gamePiece = new Avatar('red', playerName, 0, 0);
+var gamePiece = new Avatar('red', 'sally', 0, 0);
 
 // making a new Hazard object
 var mine = new Hazard((unit * 4), (unit * 4), 'purple');
@@ -176,6 +167,13 @@ mine03.render();
 
 trophy.render();
 
+function formHandler(event) {
+  event.preventDefault();
+  console.log(event);
+  
+}
+var formEl = document.getElementById('nameForm');
+formEl.addEventListener('submit', formHandler)
 
 
 
