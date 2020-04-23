@@ -17,11 +17,86 @@ h1 {
   font-size: 55px;
 }
 
-nav {
+header > nav {
   margin-top: 40px;
 }
 
-nav > ul > li {
+header > nav > ul > li {
   display: inline;
   padding-left: 200px;
+}
+
+body > article {
+  margin-top: 30px;
+}
+
+body > article > h2 {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 45px;
+}
+
+body > article > p {
+  margin-top: 14px;
+}
+
+#ashley {
+  width: 940px;
+  margin-left: 10px;
+}
+
+#ashley > img {
+  float: right;
+  margin-left: 10px;
+  height: 160px;
+  width: 160px;
+}
+
+#ashley > h3 {
+  font-size: 30px;
+}
+
+#mason {
+  width: 940px;
+  margin-left: 10px;
+}
+
+#mason > img {
+  float: left;
+  height: 160px;
+  width: 160px;
+}
+
+#mason > h3 {
+  font-size: 30px;
+}
+
+#mason > p {
+  padding-left: 10px;
+}
+
+#john {
+  width: 940px;
+  margin-left: 10px;
+}
+
+#john > img {
+  float: right;
+  margin-left: 10px;
+  height: 160px;
+  width: 160px;
+}
+
+#john > h3 {
+  font-size: 30px;
+}
+
+footer > nav {
+  margin-top: 40px;
+}
+
+footer > nav > ul > li {
+  display: inline;
+  margin-left: 130px;
+  padding-left: 60px;
 }
