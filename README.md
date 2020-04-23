@@ -34,25 +34,30 @@ function playMat(){
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+The working Title of the project is “Mine-Hound” and will most strongly resemble classic rogue-like arcade games providing entertainment for users during these trying times of social distancing, and providing a simple example for new programmers to work with canvas, opensource libraries, and data persistence. 
 
 ## Installation
 
-Provide code examples and explanations of how to get the project.
+Developers can view the project on GitHub: [Mine-Hound-Project](https://github.com/johnpstratton/201FinalProject) and from there fork the repository to work with it directly.
+front-end testing and gameplay can be done from the home page of the site found here: [HomePage](index.html)
 
-## API Reference
+## API/Libraries Reference
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+In order to get the game to render in canvas with a lego skin we used the Legra.js open-source library published with an MIT liscence. [legra-js-website](https://legrajs.com/)
+
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
+N/A
 
 ## Contributors
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+This project was developed and brought to you by Code Fellows class 201-d62 graduates as thier final project and may be found on GitHub;
+[Ashley Biermann](https://github.com/ashleybiermann)
+[John Stratton](https://github.com/johnpstratton)
+[Mason Fryberger](https://github.com/MasonChance)
 
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+Project published to GitHub pages with an MIT open-source liscence. Those wishing to work with the code can contact any of the initial contributers regarding pull requests or create a fork from the repository [here](https://github.com/johnpstratton/201FinalProject)
 
