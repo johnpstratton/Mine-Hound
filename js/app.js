@@ -63,10 +63,11 @@ Avatar.prototype.killAvatar = function () {
       attempts++;
       //send attempt to local storage (prevent page reload cheaters)
       localStorage.setItem('attemptsToWin', attempts);
-      console.log(attempts);
+      // console.log(attempts);
       // console.log('gamePiece dead: ', gamePiece.dead);
-     
     }
+    
+    console.log(localStorage.getItem('attemptsToWin'));
   }
   if(gamePiece.dead === true){
     ignite(gamePiece.x, gamePiece.y);
@@ -147,7 +148,9 @@ Avatar.prototype.winnerSquare = function (e) {
 //TODO: Check to see if next line is still needed
     localStorage.setItem('attemptsToWin', attempts);
     // reset the gameboard    
-    window.location.href = "leaderboard.html";
+    youWin();
+    // attempted to set a delay so that they could see the animation but ultimately everything is working in terms of MVP. 
+    setTimeout((window.location.href = "leaderboard.html"), 5000);
   }
   
 
@@ -231,7 +234,7 @@ document.addEventListener('keydown', gamePiece.killAvatar);
 checkForPreviousAttempts();
 
 
-youWin();
+
 
 
 

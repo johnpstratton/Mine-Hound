@@ -34,6 +34,7 @@ var lowWinner = new Winners('Loser', 324);
 lowWinner.renderTable();
 
 var playerName = localStorage.getItem('playerName');
+//FIXME: this might be the stacking issue. attempts is declared already in app.js by reseting it here it may be what's causing the issue. 
 var attempts = localStorage.getItem('attemptsToWin');
 
 if (playerName) {
