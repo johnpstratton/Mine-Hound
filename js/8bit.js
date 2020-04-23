@@ -94,5 +94,11 @@ function youWin(){
   //for-loop cycles through allHazards using [i] and calls 
   //celebrate() on a setTimeOut passing in allHazards[i].x and allHazards[i].y as arguments. 
   //TODO: Call in the winnerSquare event handler
-  setTimeout(legra.rectangle())
+  // var i;
+  // for(var j = 0; j < allHazards.length; j++){
+    
+      var y = allHazards[0].y;
+      var x = allHazards[0].x;
+      setTimeout(legra.rectangle((x + 2), (y + 2), unit, unit,{filled: false, color: colorArr[0]}), (1000 * i));
+  
 }

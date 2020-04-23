@@ -230,7 +230,7 @@ document.addEventListener('keydown', gamePiece.killAvatar);
 checkForPreviousAttempts();
 
 
-
+youWin();
 
 
 
