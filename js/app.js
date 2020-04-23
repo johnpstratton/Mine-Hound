@@ -9,9 +9,6 @@ legra.ctx = ctx;
 const unit = 5; // hieght and width of game "tile";
 
 
-
-
-
 //TODO: track total attempts
 var attempts = 0;
 
@@ -30,6 +27,7 @@ function Avatar(color, name, x, y) {
 Avatar.prototype.render = function () {
   // ctx.fillStyle = this.color; // this line was core code.
   legra.rectangle(this.x, this.y, this.width, this.height,{filled: true, color: this.color});
+ 
 };
 
 // Hazard constructor
@@ -55,10 +53,14 @@ Avatar.prototype.killAvatar = function () {
       localStorage.setItem('attemptsToWin', attempts);
       console.log(attempts);
       // console.log('gamePiece dead: ', gamePiece.dead);
-      // Reset the gameboard
-      startGame();
+     
     }
   }
+  if(gamePiece.dead === true){
+    ignite(gamePiece.x, gamePiece.y);
+    setTimeout(startGame, 5000);
+  }
+    
 };
 
 // Render hazard
@@ -115,7 +117,6 @@ function Prize(x, y, color) {
   this.color = color;
 }
 
-
 Prize.prototype.render = function(){
   // ctx.fillStyle = this.color; // this was core code
   legra.rectangle(this.x, this.y, this.width, this.height,{filled: true, color: this.color});
@@ -132,6 +133,7 @@ Avatar.prototype.winnerSquare = function (e) {
     startGame();
   }
 };
+
 // retrieves data from localStorage to prevent page reload from zero-ing out the attempts counter
 var checkForPreviousAttempts = function() {
   if(localStorage.getItem('attemptsToWin') > 0){
@@ -142,7 +144,6 @@ var checkForPreviousAttempts = function() {
 //!!! function below is used to set the game state to initial. it's purpose is to call all instantiations of objects and renders. this is called in multiple event handlers!!!//
 
 //====== The start function===//
-//TODO: FIXME: WRAP ALL OBJECT INSTANTIATIONS IN START FUNCTION
 // Declares Avatar for assignment in Start function
 var gamePiece;
 //Declares Hazards for assignment in Start function
@@ -155,22 +156,26 @@ var mine05;
 var mine06;
 var mine07;
 var mine08;
+var mine09;
+var mine10;
 // Declares prize for assignment in Start function
 var trophy;
 
 function startGame(){
 
-  gamePiece = new Avatar('red', 'sally', 0, 0);
+  gamePiece = new Avatar('red', 'sally', 0,0);
 
   mine = new Hazard((unit * 4), (unit * 4), 'purple');
-  mine01 = new Hazard((unit * 3), (unit * 7), 'orange');
+  mine01 = new Hazard(0, (unit * 7), 'orange');
   mine02 = new Hazard((unit * 7), (unit* 9), 'red')
   mine03 = new Hazard((unit * 3), (unit * 9), 'grey')
   mine04 = new Hazard ((unit), (unit * 3), 'brown');
   mine05 = new Hazard((unit * 9), (unit * 7), 'teal');
   mine06 = new Hazard((unit * 2), (unit * 5), 'cobalt');
   mine07 = new Hazard((unit * 5),(unit * 8), 'mediumseagreen');
-  mine08 = new Hazard((unit * 6), (unit * 4), 'blanchedalmond');
+  mine08 = new Hazard((unit * 6), (unit * 2), 'blanchedalmond');
+  mine09 = new Hazard((unit * 8), 0, 'mediumseagreen');
+  mine10 = new Hazard((unit * 7), (unit * 5), 'grey')
 
   trophy = new Prize((unit * 9), (unit * 9), 'goldenrod');
 
@@ -188,12 +193,12 @@ function startGame(){
   mine06.render();
   mine07.render();
   mine08.render();
+  mine09.render();
+  mine10.render();
 
   trophy.render();
 }
 startGame();
-
-
 
 //Win Condition event Listener
 document.addEventListener('keydown', gamePiece.winnerSquare);
