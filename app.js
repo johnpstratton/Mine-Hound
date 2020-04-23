@@ -165,15 +165,15 @@
 // mine01.render();
 // mine03.render();
 
-// trophy.render();
+// // trophy.render();
 
-function formHandler(event) {
-  event.preventDefault();
-  console.log(event);
+// function formHandler(event) {
+// //   event.preventDefault();
+// //   console.log(event);
   
-}
-var formEl = document.getElementById('nameForm');
-formEl.addEventListener('submit', formHandler);
+// }
+// var formEl = document.getElementById('nameForm');
+// formEl.addEventListener('submit', formHandler);
 
 
 
