@@ -63,9 +63,11 @@ Avatar.prototype.killAvatar = function () {
       attempts++;
       //send attempt to local storage (prevent page reload cheaters)
       localStorage.setItem('attemptsToWin', attempts);
-      console.log(attempts);
+      // console.log(attempts);
       // console.log('gamePiece dead: ', gamePiece.dead);
     }
+    
+    console.log(localStorage.getItem('attemptsToWin'));
   }
   if(gamePiece.dead === true){
     ignite(gamePiece.x, gamePiece.y);
@@ -142,9 +144,17 @@ Avatar.prototype.winnerSquare = function (e) {
     //TODO: ADD RENDER TO TABLE FUNCTION BEFORE ZERO-ING OUT ATTEMPTS ON NEXT LINES. since attempts was being stored and referenced throughout, just use attempts as the number variable in the render function
     //Save data that we want in leaderboard.js (gamePiece.name and attempts);
     attempts = 0;
-    // reset the gameboard
-    window.location.href = "leaderboard.html";
+
+//TODO: Check to see if next line is still needed
+    localStorage.setItem('attemptsToWin', attempts);
+    // reset the gameboard    
+    youWin();
+    // attempted to set a delay so that they could see the animation but ultimately everything is working in terms of MVP. 
+    setTimeout((window.location.href = "leaderboard.html"), 5000);
+
   }
+  
+
 };
 
 // retrieves data from localStorage to prevent page reload from zero-ing out the attempts counter
