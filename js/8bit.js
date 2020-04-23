@@ -90,15 +90,17 @@ function ignite(x, y){
 
 
 function youWin(){
-  var colorArr = ['goldenrod', 'cobalt', 'green', 'red'];
-  //for-loop cycles through allHazards using [i] and calls 
-  //celebrate() on a setTimeOut passing in allHazards[i].x and allHazards[i].y as arguments. 
+  var colorArr = ['goldenrod', 'blue', 'green', 'red'];
+ 
   //TODO: Call in the winnerSquare event handler
   // var i;
-  // for(var j = 0; j < allHazards.length; j++){
-    
-      var y = allHazards[0].y;
-      var x = allHazards[0].x;
-      setTimeout(legra.rectangle((x + 2), (y + 2), unit, unit,{filled: false, color: colorArr[0]}), (1000 * i));
   
+  for(var i = 0; i < allHazards.length; i++){
+      var y = allHazards[i].y;
+      var x = allHazards[i].x;
+      setTimeout(legra.rectangle((x + 2), (y + 2), unit, unit,{filled: false, color: colorArr[0]}), 1000);
+      setTimeout(legra.rectangle((x - 2), (y - 2), (unit + 3), (unit + 3),{filled: false, color: colorArr[1]}), 4000);
+      setTimeout(legra.rectangle((x - 3), (y + 1), (unit + 6), (unit + 6),{filled: false, color: colorArr[2]}), 7000);
+      setTimeout(legra.rectangle(x, (y - 5), (unit + 6), (unit + 6),{filled: false, color: colorArr[3]}), 10000);
+  }
 }

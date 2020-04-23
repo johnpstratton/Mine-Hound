@@ -146,10 +146,11 @@ Avatar.prototype.winnerSquare = function (e) {
     attempts = 0;
 //TODO: Check to see if next line is still needed
     localStorage.setItem('attemptsToWin', attempts);
-    // reset the gameboard
-    
+    // reset the gameboard    
     window.location.href = "leaderboard.html";
   }
+  
+
 };
 
 // retrieves data from localStorage to prevent page reload from zero-ing out the attempts counter
