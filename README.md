@@ -1,6 +1,7 @@
 # 201FinalProject
 ## John Stratton, Ashley Biermann, Mason Fryberger
 
+[*Click Here to Return to the HomePage*](index.html)
 
 ### Wireframe visualization for each page
 
@@ -13,11 +14,23 @@
 
 ## Synopsis
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+ Our goal for this project is to provide our users with an entertaining game utilizing `<canvas>` and JavaScript, that invokes a sense of nostalgia hailing back to classic games such as Dig Dug © and MineSweeper ©. Users will also have the option to read about us personally as developers and compare their game scores to a leaderboard. Other developers will have the option to look at our markdown documents and view our sources, references, and libraries. 
 
 ## Code Example
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+![canvas-styling](img-assets/example-of-library-use.PNG)
+
+``` 
+var legra = new legra(ctx, 10, {color: 'yellow'});
+legra.ctx = ctx;
+const unit = 5; // height and width of game "tile";
+
+function playMat(){
+  legra.rectangle(0, 0, (unit * 10), (unit * 10), {filled: true, color: '#00cbff'});
+
+}
+
+```
 
 ## Motivation
 
