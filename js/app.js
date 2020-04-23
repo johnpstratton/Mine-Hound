@@ -66,12 +66,11 @@ Avatar.prototype.killAvatar = function () {
       // console.log(attempts);
       // console.log('gamePiece dead: ', gamePiece.dead);
     }
-    
     console.log(localStorage.getItem('attemptsToWin'));
   }
   if(gamePiece.dead === true){
     ignite(gamePiece.x, gamePiece.y);
-    setTimeout(startGame, 5000);
+    setTimeout(startGame, 3000);
   }
 };
 
@@ -102,7 +101,7 @@ Avatar.prototype.movementControl = function (e) {
   }
   // right directional key
   if (e.keyCode == 39) {
-    if (gamePiece.x < (arena.width - unit)) {
+    if (gamePiece.x < ((arena.width/10) - unit)) {
       gamePiece.x += unit;
       // console.log('right-directional');
       gamePiece.render();
@@ -110,7 +109,8 @@ Avatar.prototype.movementControl = function (e) {
   }
   // down directional key
   if (e.keyCode == 40) {
-    if (gamePiece.y < (arena.height - unit)) {
+    // debugger;
+    if (gamePiece.y < ((arena.height/10) - unit)) {
       gamePiece.y += unit;
       // console.log('down-directional');
       gamePiece.render();
@@ -143,18 +143,17 @@ Avatar.prototype.winnerSquare = function (e) {
     localStorage.setItem('playerName', playerName);
     //TODO: ADD RENDER TO TABLE FUNCTION BEFORE ZERO-ING OUT ATTEMPTS ON NEXT LINES. since attempts was being stored and referenced throughout, just use attempts as the number variable in the render function
     //Save data that we want in leaderboard.js (gamePiece.name and attempts);
-    attempts = 0;
-
-//TODO: Check to see if next line is still needed
-    localStorage.setItem('attemptsToWin', attempts);
     // reset the gameboard    
     youWin();
     // attempted to set a delay so that they could see the animation but ultimately everything is working in terms of MVP. 
     setTimeout((window.location.href = "leaderboard.html"), 5000);
 
-  }
-  
+    attempts = 0;
 
+//TODO: Check to see if next line is still needed
+    localStorage.setItem('attemptsToWin', attempts);
+
+  }
 };
 
 // retrieves data from localStorage to prevent page reload from zero-ing out the attempts counter
@@ -188,23 +187,25 @@ function startGame(){
 
   gamePiece = new Avatar('red', 'sally', 0,0);
 
+  allHazards = [];
+
   mine = new Hazard((unit * 4), (unit * 4), 'purple');
   mine01 = new Hazard(0, (unit * 7), 'orange');
-  mine02 = new Hazard((unit * 7), (unit* 9), 'red')
-  mine03 = new Hazard((unit * 3), (unit * 9), 'grey')
+  mine02 = new Hazard((unit * 7), (unit* 9), 'red');
+  mine03 = new Hazard((unit * 3), (unit * 9), 'grey');
   mine04 = new Hazard ((unit), (unit * 3), 'brown');
   mine05 = new Hazard((unit * 9), (unit * 7), 'teal');
   mine06 = new Hazard((unit * 2), (unit * 5), 'cobalt');
   mine07 = new Hazard((unit * 5),(unit * 8), 'mediumseagreen');
   mine08 = new Hazard((unit * 6), (unit * 2), 'blanchedalmond');
   mine09 = new Hazard((unit * 8), 0, 'mediumseagreen');
-  mine10 = new Hazard((unit * 7), (unit * 5), 'grey')
+  mine10 = new Hazard((unit * 7), (unit * 5), 'grey');
 
   trophy = new Prize((unit * 9), (unit * 9), 'goldenrod');
 
   // Calls background render from 8bit.js
   playMat();
-  // render all game objects in order, player, hazard, trophy. 
+  // render all game objects in order, player, hazard, trophy.
   gamePiece.render();
 
   mine.render();
