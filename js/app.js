@@ -8,10 +8,6 @@ var legra = new legra(ctx, 10, {color: 'yellow'});
 legra.ctx = ctx;
 const unit = 5; // hieght and width of game "tile";
 
-
-
-
-
 //track total attempts
 
 var attempts = 0;
@@ -26,20 +22,23 @@ function Avatar(color, name, x, y) {
   this.height = unit;
   this.dead = false;
 }
+
 var playerName;
+
 function formHandler(event) {
   event.preventDefault();
-  playerName = event.name.value;
-  
+  console.log(event);
+  playerName = event.target.name.value;
+localStorage.setItem('playerName', playerName);
 }
+
 var formEl = document.getElementById('nameForm');
-formEl.addEventListener('submit', formHandler)
+formEl.addEventListener('submit', formHandler);
 
 // Render avatar
 Avatar.prototype.render = function () {
   // ctx.fillStyle = this.color; // this line was core code.
   legra.rectangle(this.x, this.y, this.width, this.height,{filled: true, color: this.color});
- 
 };
 
 // Hazard constructor
@@ -55,6 +54,7 @@ function Hazard(x, y, color) {
 
 var allHazards = [];
 
+//TODO: check with TA to help. Everytime avatar dies it takes the attempt that you are on and adds it to the previous number of attempts, and give a total 1, 3, 6, 10
 //==== DeadAlive Condition Method====//
 Avatar.prototype.killAvatar = function () {
   for (var i = 0; i < allHazards.length; i++) {
@@ -73,7 +73,6 @@ Avatar.prototype.killAvatar = function () {
     ignite(gamePiece.x, gamePiece.y);
     setTimeout(startGame, 5000);
   }
-    
 };
 
 // Render hazard
@@ -138,19 +137,21 @@ Prize.prototype.render = function(){
 Avatar.prototype.winnerSquare = function (e) {
   if (gamePiece.x === trophy.x && gamePiece.y === trophy.y) {
     attempts++;
-    console.log('Winner you WIN!!!');
+    // console.log('Winner you WIN!!!');
 
     localStorage.setItem('attemptsToWin', attempts);
-    localStorage.setItem('playerName', gamePiece.name);
+    localStorage.setItem('playerName', playerName);
     //TODO: ADD RENDER TO TABLE FUNCTION BEFORE ZERO-ING OUT ATTEMPTS ON NEXT LINES. since attempts was being stored and referenced throughout, just use attempts as the number variable in the render function
     //Save data that we want in leaderboard.js (gamePiece.name and attempts);
     attempts = 0;
+
 //TODO: Check to see if next line is still needed
     localStorage.setItem('attemptsToWin', attempts);
     // reset the gameboard    
     youWin();
     // attempted to set a delay so that they could see the animation but ultimately everything is working in terms of MVP. 
     setTimeout((window.location.href = "leaderboard.html"), 5000);
+
   }
   
 
