@@ -9,6 +9,10 @@ body {
   width: 960px;
   margin-left: auto;
   margin-right: auto;
+  color: goldenrod;
+  font-family: monospace;
+  overflow: auto;
+  background-color: #071a2e;
 }
 
 h1 {
