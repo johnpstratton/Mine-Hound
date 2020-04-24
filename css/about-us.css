@@ -71,6 +71,9 @@ body > article > p {
 #mason {
   width: 940px;
   margin-left: 10px;
+  background-image: linear-gradient(to right,#261728, #6a0a77) ;
+  font-family: monospace;
+  color: #09ef2f;
 }
 
 #mason > img {
@@ -78,6 +81,7 @@ body > article > p {
   margin-right: 10px;
   height: 160px;
   width: 160px;
+  border: groove 4px #eda509 ;
 }
 
 #mason > h3 {
@@ -87,15 +91,20 @@ body > article > p {
 #mason > h3 > p {
   margin-top: 10px;
   font-size: 15px;
+  color:  #09ef2f;
 }
 
 #mason > h3 > p > a {
   margin-left: 2px;
   margin-right: 12px;
+  color:  #09ef2f;
 }
+
 
 #mason > p {
   padding-left: 10px;
+  padding-bottom: 5px;
+  border-bottom: groove 5px #f63232;
 }
 
 #john {
@@ -129,6 +138,6 @@ footer > nav {
 
 footer > nav > ul > li {
   display: inline;
-  margin-left: 130px;
+  margin-left: 70px;
   padding-left: 60px;
 }

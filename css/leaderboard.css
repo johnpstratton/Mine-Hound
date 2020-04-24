@@ -49,4 +49,10 @@ article > table > tr {
 
 footer {
   margin-top: 300px;
+  padding-bottom: 20px;
+}
+footer > nav > ul > li {
+  display: inline;
+  margin-left: 70px;
+  padding-left: 60px;
 }
