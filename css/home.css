@@ -1,36 +1,49 @@
 *{
   overflow: hidden;
-  outline: purple  dotted 1px;
+  /* outline: purple  dotted 1px; */
   box-sizing: border-box;
   overflow: auto;
+  background-color: #071a2e;
 }
+
+
 
 body{
   width: 960px;
   margin-left: auto;
   margin-right: auto;
+  color: goldenrod;
+  font-family: monospace;
+  overflow: unset;
+  
 }
 
 h1 {
   margin-top: 20px;
   text-align: center;
   font-size: 55px;
+  overflow: unset;
 }
 
 header > nav {
   margin-top: 40px;
+  overflow: unset;
 }
 
 header > nav > ul > li {
   display: inline;
   padding-left: 200px;
+  overflow: unset;
 }
+
+
 
 main > section > article > h2 {
   margin-top: 28px;
-  margin-left: 120px;
+  margin-left: 270px;
   text-align: center;
   font-size: 36px;
+  overflow: unset;
 }
 strong {
   font-weight: bolder;
@@ -39,6 +52,7 @@ main > section > article > p {
   width: 700px;
   margin-top: 10px;
   margin-left: 150px;
+  overflow: unset;
 }
 
 main > section > article > img {
@@ -81,4 +95,7 @@ footer > nav > ul > li {
   display: inline;
   margin-left: 70px;
   padding-left: 60px;
+}
+#nameForm fieldset{
+  margin-left: 100px;
 }
