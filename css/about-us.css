@@ -1,9 +1,3 @@
-/* *{
-  overflow: hidden;
-  outline: purple  dotted 1px;
-  box-sizing: border-box;
-  overflow: auto;
-} */
 
 body {
   width: 960px;
@@ -39,24 +33,29 @@ body > article > p {
 }
 
 #ashley {
+  background-color: rgb(250, 181, 250);
   width: 940px;
   margin-left: 10px;
 }
 
 #ashley > img {
   float: right;
+  border-radius: 3px;
   margin-left: 20px;
-  height: 160px;
-  max-width:160px;
+  height: 190px;
+  max-width:200px
 }
 
 #ashley > h3 {
   text-align: right;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 40px;
+  color: rgb(70, 2, 70);
 }
 
 #ashley > h3 > p {
   margin-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 15px;
 }
 
@@ -65,7 +64,12 @@ body > article > p {
 }
 
 #ashley > p {
+  padding-left: 6px;
+  padding-bottom: 6px;
   line-height: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(70, 2, 70);
+  font-size: 14px;
 }
 
 #mason {
@@ -100,7 +104,6 @@ body > article > p {
   color:  #09ef2f;
 }
 
-
 #mason > p {
   padding-left: 10px;
   padding-bottom: 5px;
@@ -110,6 +113,9 @@ body > article > p {
 #john {
   width: 940px;
   margin-left: 10px;
+  background-color: rgb(94, 127, 226);
+  padding-left: 6px;
+  padding-bottom: 6px;
 }
 
 #john > img {
