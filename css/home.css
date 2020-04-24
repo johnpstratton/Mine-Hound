@@ -32,7 +32,9 @@ main > section > article > h2 {
   text-align: center;
   font-size: 36px;
 }
-
+strong {
+  font-weight: bolder;
+}
 main > section > article > p {
   width: 700px;
   margin-top: 10px;
